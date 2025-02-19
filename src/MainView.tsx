@@ -16,5 +16,5 @@ export const MainView = () => {
         // TODO
     }, [videoFiles])
 
-    return (<div><VideoSelector videoFiles={videoFiles} /></div>)
+    return (<div><VideoSelector videoFiles={videoFiles} /><VideoSelector videoFiles={videoFiles} /></div>)
 }
