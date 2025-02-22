@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import videosReducer from "./videos/videos.slice.ts";
-import subtitlesReducer from "./subtitles/subtitles.slice.ts";
+import detailsReducer from "./details/details.slice.ts";
 import globalReducer from "./global/global.slice.ts";
 
 export const store = configureStore({
   reducer: {
     global: globalReducer,
     videos: videosReducer,
-    subtitles: subtitlesReducer,
+    videoDetails: detailsReducer,
   },
 });
 

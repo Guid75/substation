@@ -1,11 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { invoke } from "@tauri-apps/api/core";
-
-type FileInfo = {
-  filename: string;
-  completePath: string; 
-}
+import { FileInfo } from "@/files/types";
 
 export interface VideoState {
   files: FileInfo[];
@@ -40,13 +36,8 @@ export const videosSlice = createSlice({
   },
 });
 
-function detectVideoFiles() {
-  return  invoke("collect_video_files") as Promise<FileInfo[]>;
-  // return getFilesFromFS({
-  //   root: process.cwd(),
-  //   extensions: VIDEO_EXTENSIONS,
-  //   recursive: true,
-  // });
+async function detectVideoFiles() {
+  return invoke("collect_video_files") as Promise<FileInfo[]>;
 }
 
 export const getVideoFilesFromFS = createAsyncThunk(
@@ -54,7 +45,6 @@ export const getVideoFilesFromFS = createAsyncThunk(
   detectVideoFiles
 );
 
-// Action creators are generated for each case reducer function
 export const { setCurrentVideoIndex } = videosSlice.actions;
 
 export default videosSlice.reducer;
