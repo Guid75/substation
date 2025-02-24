@@ -30,16 +30,21 @@ export const MainView = () => {
         dispatch(getDetailsForVideoFile(videoFiles[selectedIndex].completePath));
     }
 
-    return (<ResizablePanelGroup
-        direction="horizontal"
-        className="max-w-md rounded-lg border md:min-w-[450px]"
-    >
-        <ResizablePanel>
-            <VideoSelector videoFiles={videoFiles} onVideoSelectionChange={refreshDetailPanel} />
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel>
-            <SubtitleSelector subtitleFiles={externalSubtitleFiles} />
-        </ResizablePanel>
-    </ResizablePanelGroup >)
+    return (
+        <div className="h-screen w-full flex">
+            <ResizablePanelGroup
+                direction="horizontal"
+                className="h-full w-full" // max-w-md rounded-lg border md:min-w-[450px]"
+            >
+                <ResizablePanel className="flex-1">
+                    <div className="h-full w-full overflow-auto">
+                        <VideoSelector videoFiles={videoFiles} onVideoSelectionChange={refreshDetailPanel} />
+                    </div>
+                </ResizablePanel>
+                <ResizableHandle withHandle />
+                <ResizablePanel className="flex-1">
+                    <SubtitleSelector subtitleFiles={externalSubtitleFiles} />
+                </ResizablePanel>
+            </ResizablePanelGroup >
+        </div >)
 }
