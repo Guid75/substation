@@ -10,6 +10,7 @@ import { getDetailsForVideoFile } from "./details/details.slice";
 export const MainView = () => {
     const videoFiles = useSelector((state: RootState) => state.videos.files);
     const externalSubtitleFiles = useSelector((state: RootState) => state.videoDetails.externalSubtitleFiles)
+    const internalSubtitles = useSelector((state: RootState) => state.videoDetails.internalSubtitles)
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -21,8 +22,12 @@ export const MainView = () => {
     }, [videoFiles])
 
     useEffect(() => {
-        console.log(externalSubtitleFiles)
+        // TODO
     }, [externalSubtitleFiles])
+
+    useEffect(() => {
+        // TODO
+    }, [internalSubtitles])
 
 
     function refreshDetailPanel(selectedIndex: number) {
@@ -41,7 +46,7 @@ export const MainView = () => {
                         <VideoSelector videoFiles={videoFiles} onVideoSelectionChange={refreshDetailPanel} />
                     </div>
                 </ResizablePanel>
-                <ResizableHandle withHandle />
+                <ResizableHandle />
                 <ResizablePanel className="flex-1">
                     <SubtitleSelector subtitleFiles={externalSubtitleFiles} />
                 </ResizablePanel>

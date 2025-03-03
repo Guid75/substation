@@ -33,7 +33,7 @@ export function DataTable<TData, TValue>({
         enableMultiRowSelection: false,
         onRowSelectionChange: setRowSelection,
         state: {
-            rowSelection
+            rowSelection,
         }
     })
 

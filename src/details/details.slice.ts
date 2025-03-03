@@ -5,10 +5,12 @@ import { FileInfo } from "@/files/types";
 
 export type VideoDetails = {
   externalSubtitleFiles: FileInfo[];
+  internalSubtitles: unknown;
 }
 
 const initialState: VideoDetails = {
-  externalSubtitleFiles: []
+  externalSubtitleFiles: [],
+  internalSubtitles: null
 };
 
 export const detailsSlice = createSlice({
